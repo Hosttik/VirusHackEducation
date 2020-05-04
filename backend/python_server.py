@@ -58,7 +58,7 @@ def get_new_session_id():
 
 @route('/get_disciplines', method='GET')
 @allow_cors
-def get_desciplines():
+def get_disciplines():
     print('SERVER: Get disciplines')
     answer = [{'title': DISCIPLINES[d], 'id': d, 'image': discipline_img_path(d)} for d in DISCIPLINES_IDS]
     return json.dumps(answer)
