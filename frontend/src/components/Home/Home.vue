@@ -27,7 +27,6 @@
 </template>
 
 <script>
-  // import startScreen from 'src/assets/start-screen.png';
   import { apiHost } from 'src/api/api.utils';
   import showNotify from 'src/helpers/showNotify';
   import { splitEvery } from 'ramda'

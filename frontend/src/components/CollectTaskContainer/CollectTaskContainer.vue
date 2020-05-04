@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: 'СollectTaskContainer'
+    name: 'CollectTaskContainer'
   }
 </script>
 

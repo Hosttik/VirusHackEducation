@@ -69,7 +69,7 @@
   import getUrl from 'src/helpers/getUrl';
 
   export default {
-    name: 'СollectTask',
+    name: 'CollectTask',
     async mounted() {
       const id = this.$route.params.id;
       try {
@@ -101,7 +101,12 @@
     },
     methods: {
       goToNextScreen: function () {
-        this.$router.push({path: `/collection?params=${JSON.stringify({selectedTasks: this.selectedTasks})}`})
+        this.$router.push({
+          path: `/collection?params=${JSON.stringify({
+            selectedTasks: this.selectedTasks,
+            disc: this.$route.params.id
+          })}`
+        })
       }
     }
   }
