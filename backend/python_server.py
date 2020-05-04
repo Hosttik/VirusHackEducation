@@ -14,13 +14,15 @@
 
 
 #================================ PACKAGES ========================================
+import os
 import json
 from bottle import run, route, response, request
 
-
 #================================ GLOBAL VARS =====================================
-all_ids = []
-
+# all_ids = []
+DISCIPLINES_IDS = ['math', 'info', 'rus']
+DISCIPLINES = {'math': 'Математика', 'info': 'Информатика', 'rus': 'Русский язык'}
+DISCIPLINES_IMGS = {}
 
 #================================ WRAPPER =========================================
 def allow_cors(func):
@@ -30,8 +32,19 @@ def allow_cors(func):
         return func(*args, **kwargs)
     return wrapper
 
+#================================ SERVER FUNCTIONS =============================
+def discipline_img_path(imgid):
+    imgpath = 'images/{}.jpg'.format(imgid)
+    return imgpath
+
+def server_path(imgpath):
+    path = os.path.normpath('/static/' + imgpath).replace('\\', '/')
+    return path
+
+
 
 #================================ INTERFACE FUNCTIONS =============================
+
 
 @route('/test', method='GET')
 @route('/test', method='POST')
@@ -43,12 +56,20 @@ def get_new_session_id():
     return json.dumps(answer)
 
 
+@route('/get_disciplines', method='GET')
+@allow_cors
+def get_desciplines():
+    print('SERVER: Get disciplines')
+    answer = [{'title': DISCIPLINES[d], 'id': d, 'image': discipline_img_path(d)} for d in DISCIPLINES_IDS]
+    return json.dumps(answer)
+
+
 # POST method
 @route('/command-1', method='POST')
 @route('/command-1', method='OPTIONS')
 @allow_cors
 def command_1():
-	# get value
+    # get value
     value = request.forms.get('variable')
     print('command -> "variable" value:' + str(value))
 
@@ -64,7 +85,7 @@ def command_1():
 @route('/command-2', method='GET')
 @allow_cors
 def command_2():
-	# get value
+    # get value
     value = request.query.variable
 
     print('command-2 -> "variable" value: ' + str(value))
@@ -74,12 +95,6 @@ def command_2():
     return json.dumps(answer)
 
 
-# Server working directory
-@route('/static/<filepath:path>')
-def server_static(filepath):
-    return static_file(filepath, root='path/to/dir')
-
-
-
 #================================ RUN SERVER ======================================
-run(host='192.168.33.10', port=8080, debug=True, reloader=True)
+# run(host='192.168.33.10', port=8080, debug=True, reloader=True)
+run(host='localhost', port=8080, debug=True, reloader=True)
