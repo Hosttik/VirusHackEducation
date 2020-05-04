@@ -58,7 +58,13 @@
           title: 'Главная',
           href: '/',
           icon: 'fa-home'
-        }];
+        },
+          {
+            title: 'Личный кабинет',
+            href: '/lk',
+            icon: 'fa-id-badge'
+          }
+        ];
       }
     }
   };

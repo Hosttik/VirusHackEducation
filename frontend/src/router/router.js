@@ -3,6 +3,10 @@ import Router from 'vue-router';
 import Home from 'src/components/Home/Home';
 import CollectTaskContainer from 'src/components/CollectTaskContainer/CollectTaskContainer';
 import CollectTask from 'src/components/CollectTask/CollectTask';
+import Collection from 'src/components/Collection/Collection';
+import ShareCollection from 'src/components/ShareCollection/ShareCollection';
+import Lk from 'src/components/Lk/Lk';
+import TestInfo from 'src/components/TestInfo/TestInfo';
 
 Vue.use(Router);
 
@@ -20,5 +24,22 @@ export default new Router({
       component: CollectTask,
       props: {}
     }]
-  },]
+  }, {
+    path: '/collection',
+    name: 'Коллекция',
+    component:Collection
+  }, {
+    path:'/share-collection',
+    name:'Задание',
+    component:ShareCollection
+  }, {
+    path:'/lk',
+    name:'Личный кабинет',
+    component:Lk
+  },
+    {
+      path:'/lk/tests-info/:id',
+      name:'Задание',
+      component: TestInfo
+    },]
 });
