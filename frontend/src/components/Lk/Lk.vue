@@ -55,7 +55,7 @@
                     </v-img>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn x-large color="secondary">Подробнее</v-btn>
+                        <v-btn x-large color="secondary" :to="`/lk/tests-info/${item.disc}`">Подробнее</v-btn>
                         <v-spacer></v-spacer>
                     </v-card-actions>
                 </v-card>
@@ -93,11 +93,11 @@
         items: [{
           title: 'Новые тесты',
           icon: 'fa-bell',
-          href: '/orders'
+          href: '/new-tests'
         }, {
           title: 'Решенные тесты',
           icon: 'fa-th-list',
-          href: '/orders-history'
+          href: '/tests-history'
         },]
       }
     }

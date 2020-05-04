@@ -4,7 +4,7 @@
             <v-row align="center" justify="center" class="md6">
                 <v-col cols="12">
                     <v-card light>
-                        <v-card-title class="headline">Ваш результат:{{this.percent}}</v-card-title>
+                        <v-card-title class="headline">Ваш результат:{{this.percent}}%</v-card-title>
                         <v-btn to="/" class="close">Закрыть</v-btn>
                     </v-card>
                 </v-col>

@@ -6,6 +6,7 @@ import CollectTask from 'src/components/CollectTask/CollectTask';
 import Collection from 'src/components/Collection/Collection';
 import ShareCollection from 'src/components/ShareCollection/ShareCollection';
 import Lk from 'src/components/Lk/Lk';
+import TestInfo from 'src/components/TestInfo/TestInfo';
 
 Vue.use(Router);
 
@@ -35,5 +36,10 @@ export default new Router({
     path:'/lk',
     name:'Личный кабинет',
     component:Lk
-  }]
+  },
+    {
+      path:'/lk/tests-info/:id',
+      name:'Задание',
+      component: TestInfo
+    },]
 });
