@@ -2,7 +2,7 @@ import random as rnd
 import pymorphy2
 import numpy as np
 from sympy import symbols, simplify, preview
-from skimage.io import imread
+from skimage.io import imread, imsave
 import networkx as nx
 
 MORPH = pymorphy2.MorphAnalyzer()
@@ -56,8 +56,17 @@ def get_random_func(difficulty=2):
         new_funcs.append(func)
     return sum(new_funcs)
 
-def save_sympy_as_image(func, filename='temp/temp.png'):
+def save_sympy_as_image(func, filename='images/temp.png'):
     preview(func, viewer='file', filename=filename)
+
+def decrease_image(img):
+    maxsize = 500
+    if img.shape[1] >= maxsize:
+        return img
+    big_img = 255 * np.ones((img.shape[0] + 20, maxsize, img.shape[2]), dtype=np.uint8)
+    offset = (maxsize - img.shape[1]) // 2
+    big_img[10:10 + img.shape[0], offset:offset + img.shape[1], :] = img
+    return big_img
 
 def add_equal_y(img):
     y_img = imread('images/y_equal.png')

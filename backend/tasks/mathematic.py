@@ -39,9 +39,8 @@ def task2_v1():
     plt.xticks(x)
     plt.yticks(np.arange(minval, np.max(y) + 1, 0.5))
     plt.grid()
-    plt.savefig('temp/temp.png')
-    img = imread('temp/temp.png')
-    return {'text': text, 'answer': answer, 'image': img}
+    plt.savefig('images/math_task2.png')
+    return {'text': text, 'answer': answer, 'image': 'math_task2.png'}
 
 def task4():
     funcs = [task4_v1, task4_v2]
@@ -92,8 +91,7 @@ def task10():
            ' f0 — частота испускаемого сигнала  (в МГц), f — частота отражённого сигнала (в МГц). Найдите частоту' \
            ' отражённого сигнала (в МГц), если батискаф погружается со скоростью {} м/с. Ответ округлите до целых.'.format(freq, speed)
     answer = round(freq * (1500 + speed) / (1500 - speed))
-    img = imread('images/batiskaf.png')
-    return {'text': text, 'answer': answer, 'image': img}
+    return {'text': text, 'answer': answer, 'image': 'batiskaf.png'}
 
 def task12():
     g = nx.DiGraph()
@@ -145,13 +143,12 @@ def task12():
 
     int_f = int_f + c
 
-    ut.save_sympy_as_image(int_f)
-    img = imread('temp/temp.png')
+    ut.save_sympy_as_image(int_f, filename='images/math_task12.png')
+    img = imread('images/math_task12.png')
     img = ut.add_equal_y(img)
-    imsave('temp/temp.png', img)
+    imsave('images/math_task12.png', ut.decrease_image(img))
 
     if ut.get_random(0, 1) <= 0.5:
-        print('!!!!')
         a = ut.get_random_int(-5, -1) + extremum
         b = ut.get_random_int(1, 5) + extremum
         answer = round(sp.N(int_f.subs('x', extremum)), 2)
@@ -163,23 +160,4 @@ def task12():
         answer = min(fa, fb)
 
     text = 'Найдите наименьшее значение функции на отрезке [{}, {}]. Ответ округлите до десятых.'.format(a, b)
-    return {'text': text, 'answer': answer, 'image': img}
-
-    # f = ut.get_random_func()
-    #
-    # df = diff(f)
-    # ut.save_sympy_as_image(df)
-    # img = imread('temp/temp.png')
-    # img = ut.add_equal_y(img)
-    #
-    # a, b = 0, 10
-    # zeros = solveset(df, domain=Interval(a, b))
-    # # zeros = [z.evalf() for z in zeros]
-    # print(zeros)
-    # # result = Min(df.subs('x', a), df.subs('x', b), *[df.subs('x', i) for i in zeros])
-    # # print(result)
-    # quit()
-    # h = ut.get_random_int(10, 30)
-    # text = 'Найдите наименьшее значение функции на отрезке [{}, {}]'
-    # answer = 4 * h
-    # return {'text': text, 'answer': answer, 'image': None}
+    return {'text': text, 'answer': answer, 'image': 'math_task12.png'}
