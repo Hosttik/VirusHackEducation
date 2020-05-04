@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from 'src/components/Home/Home';
 import CollectTaskContainer from 'src/components/CollectTaskContainer/CollectTaskContainer';
 import CollectTask from 'src/components/CollectTask/CollectTask';
+import Collection from 'src/components/Collection/Collection';
 
 Vue.use(Router);
 
@@ -20,5 +21,9 @@ export default new Router({
       component: CollectTask,
       props: {}
     }]
-  },]
+  }, {
+    path: '/collection',
+    name: 'Коллекция',
+    component:Collection
+  }]
 });

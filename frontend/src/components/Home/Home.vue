@@ -6,7 +6,7 @@
                     <v-col cols="4">
                         <v-card>
                             <v-img
-                                    :src="classItem.img"
+                                    :src="classItem.image"
                                     class="white--text align-end"
                                     gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                                     height="200px"
