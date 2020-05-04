@@ -92,3 +92,33 @@ def random_walk(G, steps, start=0):
         point = get_random_from_list(indexs)
         path.append(nodes[point])
     return path
+
+def crop_image(img):
+    temp = 255 * np.ones((img.shape[0], img.shape[1], img.shape[2]), dtype=np.uint8)
+    mask = img - temp
+    top = 0
+    for i in range(mask.shape[0]):
+        if np.sum(mask[i, :, :]) > 0:
+            if i > 0:
+                top = i - 1
+            break
+    bottom = mask.shape[0] - 1
+    for i in reversed(range(mask.shape[0])):
+        if np.sum(mask[i, :, :]) > 0:
+            if i < mask.shape[0] - 1:
+                bottom = i + 1
+            break
+    left = 0
+    for i in range(mask.shape[1]):
+        if np.sum(mask[:, i, :]) > 0:
+            if i > 0:
+                left = i - 1
+            break
+    right = mask.shape[1] - 1
+    for i in reversed(range(mask.shape[1])):
+        if np.sum(mask[:, i, :]) > 0:
+            if i < mask.shape[1] - 1:
+                right = i + 1
+            break
+
+    return img[top:bottom + 1, left:right + 1, :]

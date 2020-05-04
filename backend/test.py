@@ -1,10 +1,10 @@
-from tasks.mathematic import task2
+from tasks.mathematic import task11
 from skimage.viewer import ImageViewer
 
-result = task2()
+result = task11()
 print(result['text'])
 print(result['answer'])
 
-if result['image'] is not None:
-    viewer = ImageViewer(result['image'])
-    viewer.show()
+# if result['image'] is not None:
+#     viewer = ImageViewer(result['image'])
+#     viewer.show()
