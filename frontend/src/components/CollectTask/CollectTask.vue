@@ -40,6 +40,28 @@
             </v-col>
             <v-col cols="6">
                 <v-card max-height="600" min-height="600" class="card-cl">
+                    <v-card>
+                        <v-card-title class="headline">Настройки теста:</v-card-title>
+                        <v-divider inset></v-divider>
+                        <v-row align="center" justify="center" class="md6">
+                            <v-col cols="4">
+                                <v-text-field
+                                        label="Длительность теста"
+                                        v-model="testTimeValue"
+                                ></v-text-field>
+                            </v-col>
+                            <v-col cols="4">
+                                <v-select
+                                        v-model="selectItem"
+                                        :items="items"
+                                        item-text="name"
+                                        item-value="id"
+                                        label="Единицы времени"
+                                ></v-select>
+                            </v-col>
+                        </v-row>
+                        <v-divider inset></v-divider>
+                    </v-card>
                     <v-card-title class="headline">Выбранные задачи:</v-card-title>
                     <v-list v-for="task in getChooseTasks">
                         <v-list-item
@@ -95,16 +117,39 @@
     },
     data() {
       return {
+        testTimeValue: 5,
         selectedTasks: [],
+        selectItem: {
+          name: 'Минут',
+          id: 'm',
+          toMs: 60000
+        },
+        items: [{
+          name: 'Минут',
+          id: 'm',
+          toMs: 60000
+        }, {
+          name: 'Часов',
+          id: 'h',
+          toMs: 3600000
+        }],
         tasks: []
       }
     },
     methods: {
       goToNextScreen: function () {
+        console.log(
+          this.testTimeValue,
+          this.selectItem.toMs
+          ? this.selectItem.toMs
+          : this.items.find(val => val.id === this.selectItem).toMs)
         this.$router.push({
           path: `/collection?params=${JSON.stringify({
             selectedTasks: this.selectedTasks,
-            disc: this.$route.params.id
+            disc: this.$route.params.id,
+            time: +this.testTimeValue * (this.selectItem.toMs
+                                         ? this.selectItem.toMs
+                                         : this.items.find(val => val.id === this.selectItem).toMs)
           })}`
         })
       }
@@ -115,6 +160,11 @@
 <style scoped>
     .card-cl {
         overflow-y: scroll;
+    }
+
+    .wrap {
+        border: 1px solid #333;
+        border-radius: 5px;
     }
 
     .block {
