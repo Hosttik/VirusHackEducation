@@ -24,6 +24,7 @@
                                         @click=""
                                 >
                                     <v-list-item-action>
+                                        <v-icon @click="reloadTast(task.id)">mdi-reload</v-icon>
                                         <v-checkbox v-model="selectedTasks" :value="task.id"></v-checkbox>
                                     </v-list-item-action>
                                     <v-list-item-content>
@@ -137,12 +138,27 @@
       }
     },
     methods: {
+      reloadTast: async function (taskId) {
+        const disc = this.$route.params.id;
+        console.log(taskId, disc)
+        // try {
+        //   const res = await apiHost.get(`/reload_tasks?task=${taskId}&disc=${disc}`);
+        //   this.tasks = res.map(tasksConfig => {
+        //     tasksConfig.list = tasksConfig.list.map(task => {
+        //       task.image = getUrl(task.image)
+        //       return task
+        //     });
+        //     return tasksConfig;
+        //   });
+        // } catch (e) {
+        //   showNotify({
+        //     text: 'Произошла ошибка',
+        //     type: 'error'
+        //   })
+        // }
+
+      },
       goToNextScreen: function () {
-        console.log(
-          this.testTimeValue,
-          this.selectItem.toMs
-          ? this.selectItem.toMs
-          : this.items.find(val => val.id === this.selectItem).toMs)
         this.$router.push({
           path: `/collection?params=${JSON.stringify({
             selectedTasks: this.selectedTasks,

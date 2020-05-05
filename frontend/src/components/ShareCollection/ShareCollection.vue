@@ -110,15 +110,21 @@
         showPopup: false,
         testStarted: false,
         percent: 0,
-        time: 0
+        time: 0,
+        interval: null
 
       }
     },
     methods: {
       testStart: function () {
         const self = this;
-        setInterval(function () {
+        this.interval = setInterval(async function () {
+          const newTime = self.time - 1000;
           self.time = self.time - 1000;
+          if(newTime <= 0) {
+            clearInterval(self.interval);
+            await self.sendTestAnswers();
+          }
         }, 1000);
         this.testStarted = true;
       },
