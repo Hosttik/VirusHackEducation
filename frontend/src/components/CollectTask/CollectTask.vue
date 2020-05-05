@@ -6,7 +6,7 @@
                     <v-card-title class="headline">Выберете задачи:</v-card-title>
                     <v-list>
                         <v-list-group
-                                v-for="themes in tasks"
+                                v-for="(themes,themesIndex) in tasks"
                                 :key="themes.title"
                                 v-model="themes.active"
                                 no-action
@@ -18,13 +18,13 @@
                             </template>
 
 
-                            <template v-for="task in themes.list">
+                            <template v-for="(task,taskIndex) in themes.list">
                                 <v-list-item
                                         :key="task.id"
                                         @click=""
                                 >
                                     <v-list-item-action>
-                                        <v-icon @click="reloadTast(task.id)">mdi-reload</v-icon>
+                                        <v-icon @click="reloadTast(task.id,themesIndex,taskIndex)">mdi-reload</v-icon>
                                         <v-checkbox v-model="selectedTasks" :value="task.id"></v-checkbox>
                                     </v-list-item-action>
                                     <v-list-item-content>
@@ -134,28 +134,76 @@
           id: 'h',
           toMs: 3600000
         }],
-        tasks: []
+        tasks: [{
+          title: 'Производные',
+          list: [{
+            id: 1,
+            name: 'Производные задачка 1',
+            text: 'Текст текст <strong>текст</strong> текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
+          }, {
+            id: 2,
+            name: 'Производные задачка 2',
+            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
+          }, {
+            id: 3,
+            name: 'Производные задачка 3',
+            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
+          }]
+        }, {
+          title: 'Интегралы',
+          list: [{
+            id: 4,
+            name: 'Интегралы задачка 1',
+            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
+          }, {
+            id: 5,
+            name: 'Интегралы задачка 2',
+            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
+          }, {
+            id: 6,
+            name: 'Интегралы задачка 3',
+            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
+          }]
+        }, {
+          title: 'Логарифмы',
+          list: [{
+            id: 7,
+            name: 'Логарифм задачка 1',
+            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
+          }, {
+            id: 8,
+            name: 'Логарифм задачка 1',
+            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
+          }, {
+            id: 9,
+            name: 'Логарифм задачка 1',
+            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
+            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
+          }]
+        }]
       }
     },
     methods: {
-      reloadTast: async function (taskId) {
+      reloadTast: async function (taskId, themesIndex, taskIndex) {
         const disc = this.$route.params.id;
-        console.log(taskId, disc)
-        // try {
-        //   const res = await apiHost.get(`/reload_tasks?task=${taskId}&disc=${disc}`);
-        //   this.tasks = res.map(tasksConfig => {
-        //     tasksConfig.list = tasksConfig.list.map(task => {
-        //       task.image = getUrl(task.image)
-        //       return task
-        //     });
-        //     return tasksConfig;
-        //   });
-        // } catch (e) {
-        //   showNotify({
-        //     text: 'Произошла ошибка',
-        //     type: 'error'
-        //   })
-        // }
+        console.log(taskId, disc, themesIndex, taskIndex)
+        try {
+          const res = await apiHost.get(`/reload_tasks?task=${taskId}&disc=${disc}`);
+          this.tasks[themesIndex].list[taskIndex] = res;
+        } catch (e) {
+          showNotify({
+            text: 'Произошла ошибка',
+            type: 'error'
+          })
+        }
 
       },
       goToNextScreen: function () {
