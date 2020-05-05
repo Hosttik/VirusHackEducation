@@ -183,6 +183,26 @@ def load_results():
     return json.dumps(answer)
 
 
+@route('/reload_task', method='GET')
+@allow_cors
+def reload_task():
+    disc_name = request.query.get('disc')
+    task = request.query.get('task')
+
+    tasks = DISCIPLINES_TASKS[disc_name]
+    for i, task_group in enumerate(tasks):
+        tasks_funcs = task_group[1]
+        for func in tasks_funcs:
+            if func.__name__  == task:
+                result = func()
+                result['id'] = func.__name__
+                result['answer'] = str(result['answer'])
+                if result['image'] is not None:
+                    result['image'] = server_path(result['image'])
+                return json.dumps(result)
+
+    print('No task {}'.format(task))
+    return None
 
 
 #================================ RUN SERVER ======================================
