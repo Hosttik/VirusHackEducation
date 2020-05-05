@@ -134,61 +134,7 @@
           id: 'h',
           toMs: 3600000
         }],
-        tasks: [{
-          title: 'Производные',
-          list: [{
-            id: 1,
-            name: 'Производные задачка 1',
-            text: 'Текст текст <strong>текст</strong> текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
-          }, {
-            id: 2,
-            name: 'Производные задачка 2',
-            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
-          }, {
-            id: 3,
-            name: 'Производные задачка 3',
-            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
-          }]
-        }, {
-          title: 'Интегралы',
-          list: [{
-            id: 4,
-            name: 'Интегралы задачка 1',
-            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
-          }, {
-            id: 5,
-            name: 'Интегралы задачка 2',
-            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
-          }, {
-            id: 6,
-            name: 'Интегралы задачка 3',
-            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
-          }]
-        }, {
-          title: 'Логарифмы',
-          list: [{
-            id: 7,
-            name: 'Логарифм задачка 1',
-            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
-          }, {
-            id: 8,
-            name: 'Логарифм задачка 1',
-            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
-          }, {
-            id: 9,
-            name: 'Логарифм задачка 1',
-            text: 'Текст текст текст текст Текст текст текст текст Текст текст текст текст Текст текст текст текст',
-            img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSeItSWK4DLZTOlwo0rpdv9Y6Bh1IOeSxX_0hn1XIPjG-oFyTA_&usqp=CAU'
-          }]
-        }]
+        tasks: []
       }
     },
     methods: {
