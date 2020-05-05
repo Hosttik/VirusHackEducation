@@ -28,16 +28,23 @@ import matplotlib.pyplot as plt
 DISCIPLINES_IDS = ['math', 'info', 'rus']
 DISCIPLINES = {'math': 'Математика', 'info': 'Информатика', 'rus': 'Русский язык'}
 MATH_TASKS = [('Работа с графиками', [t_math.task2]),
+              ('Фигуры на клетках', [t_math.task3]),
               ('Теория вероятностей', [t_math.task4]),
+              ('Решение уравнений', [t_math.task5]),
               ('Планиметрия', [t_math.task6]),
+              ('Производная и графики', [t_math.task7]),
               ('Стереометрия', [t_math.task8]),
+              ('Выражения', [t_math.task9]),
               ('Физические формулы', [t_math.task10]),
+              ('Задачи на движение', [t_math.task11]),
               ('Экстремумы', [t_math.task12])]
 RUS_TASKS = [('Подбор местоимения', [t_rus.task2]),
              ('Ударения', [t_rus.task4]),
-             ('Лексические ошибки', [t_rus.task6])]
+             ('Лексические ошибки', [t_rus.task6]),
+             ('Написание слов', [t_rus.task15])]
 DISCIPLINES_TASKS = {'math': MATH_TASKS, 'rus': RUS_TASKS}
 RESULTS = []
+
 
 #================================ WRAPPER =========================================
 def allow_cors(func):
@@ -179,8 +186,12 @@ def load_results():
 
 
 #================================ RUN SERVER ======================================
+# ngrok access from internet: ngrok http 8081 -host-header="localhost:8081" -subdomain skillenger
 if os.path.exists('results.pkl'):
     with open('results.pkl', 'rb') as f:
         RESULTS = pickle.load(f)
+
+
+
 
 run(host='localhost', port=8080, debug=True, reloader=True)
